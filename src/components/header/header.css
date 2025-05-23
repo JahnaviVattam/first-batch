@@ -5,7 +5,8 @@
   color: white;
   font-size: 50px;
   display: flex;
-  justify-self: center;
   align-items: center;
+  width: 100%;
+  justify-content: center;
   box-shadow: 0px 2px 10px rgb(2, 2, 2);
 }
