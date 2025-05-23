@@ -1,0 +1,10 @@
+
+.member-container {
+  display: flex;
+  justify-content: center;
+  height: 400px;
+
+  gap: 30px; 
+  flex-wrap: wrap;
+
+}
