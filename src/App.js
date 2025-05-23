@@ -1,24 +1,23 @@
 
 import './App.css';
-import AboutUs from './components/header/aboutus/about.js';
+import AboutUs from "./components/aboutus/about.js";
 import Header from "./components/header/header.js";
 import MembersList from "./components/memberslist/memberslist.js";
-import { Member } from './components/member/member.js';
+import Section from "./components/section/section.js";
 
 function App(){
   return ( 
   <div>
     <Header />
     <div className="center-screen">
-      <AboutUs/>
-      <MembersList/>
-      <Member/>
-
+      <Section title="About Us" >
+        <AboutUs/>
+      </Section>
+      <Section title="Members">
+         <MembersList/>
+      </Section>
     </div>
-
   </div>
-
- 
   );
 }
 

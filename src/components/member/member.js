@@ -10,7 +10,7 @@
 // }
 import './Member.css';
 export function Member(props) {
-  console.log(props.name);
+  // console.log(props.name);
   const memberName=props.name;
   const memberCity=props.city;
   return (

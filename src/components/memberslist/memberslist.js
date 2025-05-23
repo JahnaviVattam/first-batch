@@ -1,5 +1,9 @@
 import { Member } from '../member/member';
+import StyleButton from "../stylebutton/stylebutton";
 import './memberslist.css';
+import { useState } from 'react';
+import Confetti from 'react-confetti';
+
  const people = [
   { name: "Jaanu", city: "Hyderabad" },
   { name: "Ravi", city: "Delhi" },
@@ -34,14 +38,37 @@ import './memberslist.css';
   { name: "Phani", city: "Hitech" }
 ];
 function MembersList() {
+  const [luckyPerson, setluckyPerson] = useState("");
+  const [showCelebration, setShowCelebration]=useState(false);
+  const [isLoading, setLoading]=useState(false);
+
+  function pickPerson() {
+    setLoading(true);
+    const randomNumber=Math.floor(Math.random()*people.length);
+    const person=people[randomNumber];
+    const luckyMessage=`${person.name} from ${person.city}`;
+
+    setTimeout(function(){
+      setluckyPerson(luckyMessage);
+      setLoading(false);
+      setShowCelebration(true);
+
+    }, 5000)
+    
+  }
   return ( 
     <>
-      <h2>Member</h2>
-      <div className="member-container">
+      {showCelebration && <Confetti numberOfPieces={2000}/>}
+      <div className="member-container" style={{overflow: 'scroll'}}>
         {people.map(function(member) {
           return <Member name={member.name} city={member.city}/>
         })}
       </div>
+      <div className='flex-center'>
+        {isLoading &&  <h3>Loading...</h3>}
+        <h2>{luckyPerson}</h2>
+        <StyleButton text="Lucky Draw" onClick={pickPerson}/>
+      </div> 
     </>
    );
 }
